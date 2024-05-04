@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundamendos Three.js</title>
+    <style>
+        body {
+            margin: 0;
+        }
+    </style>
+
+    <link rel="stylesheet" href="css/style_input.css">
+    <link rel="stylesheet" href="css/style_nav.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
+    <script src="https://kit.fontawesome.com/d14b749499.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav class="menu">
+        <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open" />
+        <label class="menu-open-button" for="menu-open">
+            <span class="hamburger hamburger-1"></span>
+            <span class="hamburger hamburger-2"></span>
+            <span class="hamburger hamburger-3"></span>
+        </label>
+
+        <a href="#" class="menu-item"> <i class="fa-solid fa-user"></i> </a>
+        <a href="#" class="menu-item"> <i class="fa-solid fa-address-card"></i> </a>
+        <a href="#" class="menu-item"> <i class="fa-solid fa-heart"></i> </a>
+
+    </nav>
+
+    <div class="input-container">
+        <textarea id="input-field" class="input-field" placeholder="Enter text here..."></textarea>
+        <button class="input-button" id="input-button"  >
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-telegram" width="26"
+                height="26" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M15 10l-4 4l6 6l4 -16l-18 7l4 2l2 6l3 -4" />
+            </svg>
+        </button>
+    </div>
+
+
+    <script defer type="module" src="index.js"></script>
+
+</body>
+
+</html>
