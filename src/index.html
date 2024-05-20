@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asistente Virtual </title>
+    <style>
+        body {
+            margin: 0;
+        }
+    </style>
+
+    <link rel="stylesheet" href="scss/main.scss">
+    <link rel="stylesheet" href="scss/style_nav.css">
+    <link rel="stylesheet" href="scss/style_input.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
+    <script src="https://kit.fontawesome.com/d14b749499.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav class="menu">
+        <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open" />
+        <label class="menu-open-button" for="menu-open">
+            <span class="hamburger hamburger-1"></span>
+            <span class="hamburger hamburger-2"></span>
+            <span class="hamburger hamburger-3"></span>
+        </label>
+
+        <a href="#" class="menu-item"> <i class="fa-solid fa-user"></i> </a>
+        <a href="#" class="menu-item"> <i class="fa-solid fa-address-card"></i> </a>
+        <a href="#" class="menu-item"> <i class="fa-solid fa-heart"></i> </a>
+
+    </nav>
+
+    <div class="input-container">
+        <textarea id="input-field" class="input-field" placeholder="Enter text here..."></textarea>
+        <button class="input-button" id="input-button">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-telegram" width="26"
+                height="26" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M15 10l-4 4l6 6l4 -16l-18 7l4 2l2 6l3 -4" />
+            </svg>
+        </button>
+    </div>
+
+    <div class="col-6" id="dataimg">
+
+        <div class="card text-white bg-dark mb-3">
+            <div class="card-header bg-secondary">Rostro Procesados</div>
+            <div class="card-body">
+                <div class="images-list">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+
+        <div id="liveToast" class="toast text-bg-primary" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+
+                <strong class="me-auto">Informacion </strong>
+                <small class="text-body-secondary">1 mins ago</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body"> Nami Asistente Puede Verte </div>
+        </div>
+    </div>
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+
+        <div id="liveToast2" class="toast text-bg-primary" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+
+                <strong class="me-auto">Informacion </strong>
+                <small class="text-body-secondary">1 mins ago</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">Usuario Verificado , Estoy Preparada Para Verte</div>
+        </div>
+    </div>
+
+
+</body>
+<!-- Modal Para login -->
+<div class="modal fade mt-5 " id="Namitequierever" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel"> <span class=""> Nami </span> Asistente</h5>
+                <button type="button" id="CerrarModal" class="btn-close" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group mb-2">
+                    <input id="input-identy" type="number" class="form-control" placeholder="Identificacion"
+                        aria-label="Identy" aria-describedby="identy">
+                    <button class="btn btn-outline-primary" type="button" id="btnidenty" disable="false">Enviar</button>
+                </div>
+
+
+                <div class="card text-white bg-dark mb-2">
+                    <video style="position: absolute; top: 0;visibility:hidden; left: 0;opacity: 0;" width="640"
+                        height="480" autoplay class="js-video"></video>
+                    <canvas width="640" height="480" autoplay class="js-canvas"></canvas>
+
+                </div>
+
+                <div id="AlertMessageView"></div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="DenegarAccesoCamara" class="btn btn-danger" data-bs-dismiss="modal">Cerrar
+                    Camara</button>
+                <button id="AccesoCamara" class="btn btn-primary" type="button" disabled>
+                    <span id="spinner-cargando" class="spinner-grow spinner-grow-sm" aria-hidden="true"></span>
+                    <span role="status">Permitir Que Nami Me Vea</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Para Registro De usuario -->
+<div class="modal fade" id="btnRegistroUsr" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Registro Usuario</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="card text-white bg-dark mb-3">
+
+                    <div class="card-footer">
+                        <p>Subir rostro para procesar reconocimiento</p>
+                        <input type="file" id="input-submit" class="form-control">
+
+                    </div>
+                    <br><br>
+                    <div class="card bg-light-gray">
+                        <div class="card-footer bg-dark">
+                            <h5 class="card-title">Registro de Usuario</h5>
+                        </div>
+                        <div id="Boxbtn" class="card-body">
+                            <form id="userForm">
+                                <div class="form-group">
+                                    <label for="id_image">ID Imagen</label>
+                                    <input type="text" class="form-control" id="id_image" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="usernames">Nombre de usuario:</label>
+                                    <input type="text" class="form-control" id="usernames" name="usernames" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password"> Contraseña:</label>
+                                    <input type="password" class="form-control" id="password" autocomplete="off"
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="emails">Correo electrónico:</label>
+                                    <input type="email" class="form-control" id="emails" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="image">Imagen de perfil:</label>
+                                    <input type="file" class="form-control-file" id="image" name="image"
+                                        accept="image/*">
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <button id="subirinfo" type="submit" class="btn btn-primary">Enviar</button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <p>Consultar Foto</p>
+
+                        <input type="number" id="id_imagen" value="1">
+                        <br>
+                        <button type="button" id="btnbuscarimg" class="bg-secondary"> Traer Foto </button>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Understood</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script defer type="module" src="js/index.js"></script>
+<script defer type="module" src="js/main.js"></script>
+
+</html>
